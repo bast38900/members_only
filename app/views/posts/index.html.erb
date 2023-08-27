@@ -3,16 +3,20 @@
 <% end %>
 <h1>Posts</h1>
 
+<div>
+  <%= link_to "New post", new_post_path %>
+  <br>
+  <br>
+</div>
+
 <div id="posts">
   <% @posts.each do |post| %>
     <%= render post %>
-    <p>
-      <%= link_to "Show this post", post %>
-    </p>
+    <%= link_to "Show this post", post %>
+    <br>
+    <br>
   <% end %>
 </div>
-
-<%= link_to "New post", new_post_path %>
 
 <% if !user_signed_in? %> 
   <p>
