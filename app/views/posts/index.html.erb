@@ -1,5 +1,6 @@
-<p style="color: green"><%= notice %></p>
-
+<% if user_signed_in? %> 
+ <div> Welcome <%= current_user.email %> </div> 
+<% end %>
 <h1>Posts</h1>
 
 <div id="posts">
@@ -12,3 +13,13 @@
 </div>
 
 <%= link_to "New post", new_post_path %>
+
+<% if !user_signed_in? %> 
+  <p>
+    <%= button_to "Sign in", new_user_session_path %> 
+  </p>
+  <% else %>
+  <p>
+    <%= button_to "Sign out", destroy_user_session_path, method: :delete %>
+  </p>
+<% end %>
